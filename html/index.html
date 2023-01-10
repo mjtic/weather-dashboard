@@ -31,33 +31,71 @@
   </head>
 
   <body>
-    <header
-      class="p-2 mb-4 container-fluid text-center bg-primary text-white header"
-    >
-      <h1>Weather Dashboard</h1>
-    </header>
-
-    <!-- div for search city -->
-    <div class="container-fluid">
+    <!-- div for header -->
+    <div class="continer-fluid">
+      <div class="row navbar bg-primary">
+        <div class="col-12 text-center text-white">
+          <h1>Weather Dashboard</h1>
+        </div>
+      </div>
+      <!-- div for search section -->
       <div class="row">
-        <div class="col-lg-3" style="width: 20rem">
-          <h3 class="mt-1">Search for a City:</h3>
-          <input
-            id="search-city"
-            style="width: 20rem"
-            class="form-control mt-3"
-            type="text"
-            placeholder="Enter a city"
-          />
+        <div class="bg-light col-3 m-3" id="searchSection">
+          <!-- div for h2 -->
+          <div class="row">
+            <div class="col-12">
+              <h2>Search for a City:</h2>
+            </div>
+          </div>
+          <!-- div for search bar -->
+          <div class="row">
+            <div class="col-12">
+              <div class="userSearch">
+                <input
+                  class="form-control mt-3"
+                  type="text"
+                  name="search"
+                  id="citySearch"
+                />
+                <button
+                  type="button"
+                  id="searchBtn"
+                  class="btn btn-lg btn-primary mt-3"
+                  style="width: 19rem"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- div for search history -->
+          <div class="row mt-3">
+            <div class="col-12">
+              <!-- appendChild li; li class = 'search-list-items' -->
+              <ul class="search-lists-container"></ul>
+            </div>
+          </div>
+        </div>
 
-          <button
-            class="btn btn-md btn-primary mt-3"
-            style="width: 20rem"
-            type="button"
-            id="searchBtn"
-          >
-            Search
-          </button>
+        <div id="weather-container" class="col-9">
+          <div class="row">
+            <div
+              id="today-city-weather"
+              class="col-12 border rounded px-3 py-3"
+            >
+              <!-- searched city -->
+            </div>
+          </div>
+
+          <!-- 5days weather header -->
+          <div class="row">
+            <div class="col-12">
+              <h2>5 Day Forecast:</h2>
+            </div>
+          </div>
+
+          <!-- 5 days weather details -->
+          <div id="fivedays-city-weather" class="row"></div>
         </div>
       </div>
     </div>
