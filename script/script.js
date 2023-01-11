@@ -74,13 +74,31 @@ function renderHTML(data) {
   $("#today-city-humidity").append(cityHumidity);
 
   for (var i = 3; i < dummydata.list.length; i = i + 8) {
-    console.log(dummydata.list[i].dt_txt);
-    console.log(dummydata.list[i].weather);
+    var fiveDaysDate = data.list[i].dt_txt;
+    // console.log(dummydata.list[i].dt_txt);
+    var weatherIcon = data.list[i].weather[0].icon;
+    // console.log(dummydata.list[i].weather[0].icon);
+    var fiveDaysTemp = data.list[i].main.temp;
     // console.log(dummydata.list[i].main.temp);
+    var fiveDaysWind = data.list[i].wind.speed;
     // console.log(dummydata.list[i].wind.speed);
+    var fiveDaysHumidity = data.list[i].main.humidity;
     // console.log(dummydata.list[i].main.humidity);
+    cityFiveDaysDate
+      .append(`<div>${fiveDaysDate}</div>`)
+      .css("display", "inline-block");
+    cityFiveDaysIcon.append(`<div>${weatherIcon}</div>`);
+    cityFiveDaysTemp.append(`<div>Temp: ${fiveDaysTemp}</div>`);
+    cityFiveDaysWind.append(`<div>Wind speed: ${fiveDaysWind}</div>`);
+    cityFiveDaysHumidity.append(`<div>Humidity: ${fiveDaysHumidity}</div>`);
   }
 }
+
+var cityFiveDaysDate = $("#fivedays-cards");
+var cityFiveDaysIcon = $("#fivedays-cards");
+var cityFiveDaysTemp = $("#fivedays-cards");
+var cityFiveDaysWind = $("#fivedays-cards");
+var cityFiveDaysHumidity = $("#fivedays-cards");
 // var cityNameHeading = $("<h3>").text(cityname)
 // $('#city-name-blahblah').append(cityNameHeading)
 
