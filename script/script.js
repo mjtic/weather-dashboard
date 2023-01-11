@@ -46,7 +46,7 @@ function renderHTML(data) {
   //   console.log(data.city.name);
   var cityName = data.city.name;
   //   console.log(data.list[0].dt_txt);
-  var date = data.list[0].dt_txt;
+  var date = data.list[0].dt_txt.split(" ");
   //   console.log(data.list[0].weather[0].icon);
   var weatherIcon = data.list[0].weather[0].icon;
   //   console.log(data.list[0].main.temp);
@@ -58,7 +58,7 @@ function renderHTML(data) {
 
   var cityNameHeading = $("<h3>").text(cityName);
   $("#today-city-heading").append(cityNameHeading);
-  var cityDate = $("<p>").text(date);
+  var cityDate = $("<p>").text(date[0]);
   $("#today-city-date").append(cityDate);
   var cityIcon = $("<img>").attr(
     "src",
@@ -72,6 +72,14 @@ function renderHTML(data) {
   $("#today-city-wind").append(cityWind);
   var cityHumidity = $("<p>").text(["Humidity: "] + humidity);
   $("#today-city-humidity").append(cityHumidity);
+
+  for (var i = 3; i < dummydata.list.length; i = i + 8) {
+    console.log(dummydata.list[i].dt_txt);
+    console.log(dummydata.list[i].weather);
+    // console.log(dummydata.list[i].main.temp);
+    // console.log(dummydata.list[i].wind.speed);
+    // console.log(dummydata.list[i].main.humidity);
+  }
 }
 // var cityNameHeading = $("<h3>").text(cityname)
 // $('#city-name-blahblah').append(cityNameHeading)
