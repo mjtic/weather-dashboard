@@ -42,6 +42,13 @@ $("#searchBtn").click(function () {
 });
 
 function renderHTML(data) {
+  $("#today-city-heading").empty();
+  $("#today-city-date").empty();
+  $("#today-city-icon").empty();
+  $("#today-city-temp").empty();
+  $("#today-city-wind").empty();
+  $("#today-city-humidity").empty();
+  $("#fivedays-city-weather").empty();
   //start with clear ////////////
   // renderHTML(data) = "";
   //   console.log(data.city.name);
@@ -120,21 +127,13 @@ function renderHTML(data) {
   }
 }
 
-// var cityNameHeading = $("<h3>").text(cityname)
-// $('#city-name-blahblah').append(cityNameHeading)
+//another click button???
 
-// function displayFirstDay (){
+// $("#searchBtn").click(function (event) {
+//   event.preventDefault();
+//   var city = $("#citySearch").val();
 
-// }
-
-//   for (let i = 0; i < 4; i++){
-//
-//   }
-
-
-
-
-
+// });
 
 var dummydata = {
   cod: "200",
