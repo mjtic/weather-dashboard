@@ -43,6 +43,7 @@ $("#searchBtn").click(function () {
 
 function renderHTML(data) {
   //start with clear ////////////
+  // renderHTML(data) = "";
   //   console.log(data.city.name);
   var cityName = data.city.name;
   //   console.log(data.list[0].dt_txt);
@@ -66,15 +67,22 @@ function renderHTML(data) {
   );
   $("#today-city-icon").append(cityIcon);
 
-  var cityTemp = $("<p>").text(["Temp: "] + temp);
+  var cityTemp = $("<p>").text(["Temp: "] + temp + ["°F"]);
   $("#today-city-temp").append(cityTemp);
-  var cityWind = $("<p>").text(["Wind speed: "] + wind);
+  var cityWind = $("<p>").text(["Wind speed: "] + wind + ["MPH"]);
   $("#today-city-wind").append(cityWind);
-  var cityHumidity = $("<p>").text(["Humidity: "] + humidity);
+  var cityHumidity = $("<p>").text(["Humidity: "] + humidity + ["%"]);
   $("#today-city-humidity").append(cityHumidity);
 
+  // Five Days Weather Card
+  var cityFiveDayWeather = $("#fivedays-city-weather");
+  var cityFiveDaysCardContainer = $("<div>")
+    .addClass("fivedays-card-container")
+    .css("display", "flex");
+  cityFiveDayWeather.append(cityFiveDaysCardContainer);
+
   for (var i = 3; i < dummydata.list.length; i = i + 8) {
-    var fiveDaysDate = data.list[i].dt_txt;
+    var fiveDaysDate = data.list[i].dt_txt.split(" ", 1);
     // console.log(dummydata.list[i].dt_txt);
     var weatherIcon = data.list[i].weather[0].icon;
     // console.log(dummydata.list[i].weather[0].icon);
@@ -84,21 +92,34 @@ function renderHTML(data) {
     // console.log(dummydata.list[i].wind.speed);
     var fiveDaysHumidity = data.list[i].main.humidity;
     // console.log(dummydata.list[i].main.humidity);
-    cityFiveDaysDate
-      .append(`<div>${fiveDaysDate}</div>`)
-      .css("display", "inline-block");
-    cityFiveDaysIcon.append(`<div>${weatherIcon}</div>`);
-    cityFiveDaysTemp.append(`<div>Temp: ${fiveDaysTemp}</div>`);
-    cityFiveDaysWind.append(`<div>Wind speed: ${fiveDaysWind}</div>`);
-    cityFiveDaysHumidity.append(`<div>Humidity: ${fiveDaysHumidity}</div>`);
+    var cityFiveDayCard = $("<div>")
+      .addClass("fivedays-card")
+      .css("flex", 1)
+      .css("width", "20%");
+    var cityFiveDayDate = $("<div>").text(fiveDaysDate);
+    var cityFiveDayIcon = $("<img>").attr(
+      "src",
+      "http://openweathermap.org/img/w/" + weatherIcon + ".png"
+    );
+    var cityFiveDayTemp = $("<div>").text("Temp: " + fiveDaysTemp + "°F");
+    var cityFiveDayWind = $("<div>").text(
+      "Wind speed: " + fiveDaysWind + "MPH"
+    );
+    var cityFiveDayHumidity = $("<div>").text(
+      "Humidity: " + fiveDaysHumidity + "%"
+    );
+
+    cityFiveDayCard.append(
+      cityFiveDayDate,
+      cityFiveDayIcon,
+      cityFiveDayTemp,
+      cityFiveDayWind,
+      cityFiveDayHumidity
+    );
+    cityFiveDaysCardContainer.append(cityFiveDayCard);
   }
 }
 
-var cityFiveDaysDate = $("#fivedays-cards");
-var cityFiveDaysIcon = $("#fivedays-cards");
-var cityFiveDaysTemp = $("#fivedays-cards");
-var cityFiveDaysWind = $("#fivedays-cards");
-var cityFiveDaysHumidity = $("#fivedays-cards");
 // var cityNameHeading = $("<h3>").text(cityname)
 // $('#city-name-blahblah').append(cityNameHeading)
 
@@ -109,6 +130,11 @@ var cityFiveDaysHumidity = $("#fivedays-cards");
 //   for (let i = 0; i < 4; i++){
 //
 //   }
+
+
+
+
+
 
 var dummydata = {
   cod: "200",
