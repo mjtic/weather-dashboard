@@ -31,9 +31,10 @@ This application was developed with intention of helping users to find current w
 
 ## Credits
 https://jquery.com/
-https://day.js.org/en/
+https://openweathermap.org/forecast5/
 https://www.w3schools.com/html/html5_webstorage.asp
 https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
 
 ## License
 
