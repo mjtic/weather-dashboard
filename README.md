@@ -40,4 +40,5 @@ https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
 
 Please refer to the LICENSE in the repo.
 
-
+## Questions
+If you have additional questions please contact me at myeonghun.jeong88@gmail.com, or if you want to see more of my work you can find them at https://github.com/mjtic
